@@ -3,26 +3,26 @@ import { ShopContext } from '../context/ShopContext'
 import Title from './Title';
 import ProductItem from './ProductItem';
 
-const LatestCollection = () => {
-
+const BestSeller = () => {
     const {products} = useContext(ShopContext);
-    const [latestProducts,setLatestProducts] = useState([])
+    const [bestSeller,setBestSeller] = useState([]);    
 
     useEffect(()=>{
-        setLatestProducts(products.slice(0,10));
+        const bestProduct = products.filter((item)=>item.bestseller);
+        setBestSeller(bestProduct)
     },[])
-    
+
   return (
-    <div className='my-10'>
-        <div className='text-center py-8 text-3xl'>
-            <Title text1='LATEST' text2='COLLECTIONS'/>
-            <p className='text-xs sm:text-sm md:text-base text-slate-400 font-serif'>
-            "Fresh arrivals to elevate your wardrobe – shop the newest trends today!"
+    <div>
+        <div className='text-center text-3xl py-9'>
+            <Title text1="BEST" text2="SELLERS"/>
+            <p className='text-xs sm:text-sm md:text-base text-gray-400 font-serif'>
+                "Discover the styles everyone’s loving – our top picks, just for you!"
             </p>
         </div>
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
             {
-                latestProducts.map((items,index)=>(
+                bestSeller.map((items,index)=>(
                     <ProductItem key={index} id={items._id} name={items.name} image={items.image} price={items.price}/>
                 ))
             }
@@ -31,4 +31,4 @@ const LatestCollection = () => {
   )
 }
 
-export default LatestCollection
+export default BestSeller

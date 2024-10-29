@@ -4,7 +4,7 @@ import {assets} from '../assets/frontend_assets/assets'
 const Footer = () => {
   return (
     <div>
-        <div className='flex flex-col justify-around sm:grid grid-cols-[2fr_1fr_1fr] gap-14 my-10 mt-14 text-sm'>
+        <div className='flex flex-col justify-around sm:grid grid-cols-[2fr_1fr_1fr] gap-14 my-10 mt-14 text-sm border p-5'>
             <div>
                 <img src={assets.logo} className='w-24 mb-5' alt="" />
                 <p className='w-full md:w-2/3 text-gray-500'>"Redefining fashion with quality pieces that fit your style, comfort, and budget."</p>

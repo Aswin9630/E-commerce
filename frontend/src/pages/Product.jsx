@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import {ShopContext} from '../context/ShopContext'
 import {useParams} from "react-router-dom"
 import { assets } from '../assets/frontend_assets/assets';
+import RelatedProduct from '../components/RelatedProduct';
 
 const Product = () => {
   const {products, currency} = useContext(ShopContext);
@@ -79,8 +80,18 @@ const Product = () => {
       </div>
       </div>
       <div className='mt-20'>
-
+          <div className='flex'>
+            <b className='border px-5 py-3 text-sm'>Description</b>
+            <p className='border px-5 py-3 text-sm'>Reviews (87)</p>
+          </div>
+          <div className='flex flex-col gap-4 text-sm text-gray-500 px-5 py-2 border'>
+            <p>Enjoy a broad collection of clothing that blends comfort with style, perfect for all seasons. With a focus on premium fabric and detailed craftsmanship, our store offers easy returns, secure transactions, and quick delivery to enhance your online shopping experience.</p>
+            <p>Shop stylish apparel that suits every occasion, from casual basics to formal wear, all in one convenient online store. We offer detailed size guides, customer reviews, and a user-friendly return policy to make your shopping easy and worry-free.</p>
+            </div>
       </div>
+
+        <RelatedProduct category={productData?.category} subCategory={productData?.subCategory}/>
+
     </div>
   ) : (
   <div className='opacity-0'></div>

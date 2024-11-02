@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from "../components/Title"
 import { assets } from '../assets/frontend_assets/assets';
+import CartTotal from '../components/cartTotal';
+import {useNavigate} from "react-router-dom"
 
 const Cart = () => {
 
@@ -10,6 +12,7 @@ const Cart = () => {
   const [cartData,setCartData] = useState([])
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const navigate = useNavigate()
 
 
   useEffect(()=>{
@@ -52,7 +55,7 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
-                <input className='border text-center max-w-10 sm:max-w-15 px-1 py-1 sm:px-2' type="number" defaultValue={item.quantity} min={1}/>
+                <input onChange={(e)=>e.target.value === '' || e.target.value === '0' ? 'null' : updateQuantity(item._id,item.size,Number(e.target.value))} className='border text-center max-w-10 sm:max-w-15 px-1 py-1 sm:px-2' type="number" defaultValue={item.quantity} min={1}/>
                 <img onClick={()=>{
                  setSelectedItem({id:item._id , size:item.size })
                  setShowModal(true);
@@ -78,8 +81,16 @@ const Cart = () => {
             )
           })
         }
+      </div>  
+      <div className='flex justify-end my-20'>
+        <div className='w-full sm:w-[450px]'>
+          <CartTotal/>
+          <div className='w-full text-center'>
+            <button onClick={()=>navigate('/place-order')} className='bg-black text-white px-8 -4 py-3 my-8'>Proceed To CheckOut</button>
+          </div>
+        </div>
       </div>
-    </div>
+    </div>  
   )
 }
 

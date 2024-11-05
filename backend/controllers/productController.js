@@ -45,6 +45,13 @@ const addProduct = async(req,res)=>{
 
 }
 const listProduct = async(req,res)=>{
+    try {
+        const product = await productModel.find({})
+        res.json({ success:true, product })
+        
+    } catch (error) {
+        res.json({success:false, message:error.message})
+    }
 
 }
 const removeProduct = async(req,res)=>{

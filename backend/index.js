@@ -5,6 +5,7 @@ import dotenv from "dotenv"
 import connectCloudinary from "./config/cloudinary.js"
 import userRoutes from "./routes/userRoutes.js"
 import adminRoutes from "./routes/adminRoute.js"
+import productRoutes from "./routes/productRoute.js"
 dotenv.config()
 
 const app = express()
@@ -18,6 +19,7 @@ app.use(cors())
 
 app.use('/api/user',userRoutes)
 app.use('/api/admin',adminRoutes)
+app.use('/api/product',productRoutes)
 
 app.listen(PORT,()=>console.log(`Server running on PORT:${PORT}`))
 

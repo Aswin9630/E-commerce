@@ -1,22 +1,45 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
+import React, { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import Add from "./pages/Add";
+import List from "./pages/List";
+import Orders from "./pages/Orders";
+import Login from "./components/Login";
+import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
+  const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') :'' );
+
+  useEffect(()=>{
+    localStorage.setItem('token',token)
+  },[token]);
+
+
   return (
-    <div className='bg-gray-50 min-h-screen'>
-      <>
-        <Navbar/>
-        <hr />
-        <div className='flex w-full'>
-          <Sidebar/>
-          <div className='w-[70%] mx-auto text-gray-600 text-base bg-gray-500'>
-
+    <div className="bg-gray-50 min-h-screen">
+      <ToastContainer/>
+      {token === "" ? (
+        <Login setToken={setToken}/>
+      ) : (
+        <>
+          <Navbar />
+          <hr />
+          <div className="flex w-full">
+            <Sidebar />
+            <div className="w-[70%] mx-auto text-gray-600 text-base">
+              <Routes>
+                <Route path="/add" element={<Add />} />
+                <Route path="/list" element={<List />} />
+                <Route path="/orders" element={<Orders />} />
+              </Routes>
+            </div>
           </div>
-        </div>
-      </>
+        </>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

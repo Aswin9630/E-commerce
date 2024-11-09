@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/admin_assets/assets'
 import axios from "axios"
-import { backendUrl } from '../utils/constants'
+import { backendUrl, currency } from '../utils/constants'
 import { toast } from 'react-toastify'
 
 const Add = ({token}) => {
@@ -39,19 +39,19 @@ const Add = ({token}) => {
                         headers:{Authorization:`Bearer ${token}`}
     })
 
-    if (response.data.success) {
-        toast.success(response.data.message)
-        setName('')
-        setDescription('')
-        setPrice('')
-        setImage1(false)
-        setImage2(false)
-        setImage3(false)
-        setImage4(false)
-    }else{
+      if (response.data.success) {
+          toast.success(response.data.message)
+          setName('')
+          setDescription('')
+          setPrice('')
+          setImage1(false)
+          setImage2(false)
+          setImage3(false)
+          setImage4(false)
+      }else{
 
-      toast.error(response.data.message)
-    }  
+        toast.error(response.data.message)
+      }  
      
     } catch (error) {
       console.error(error);
@@ -112,7 +112,7 @@ const Add = ({token}) => {
         </div>
         <div>
           <p className='mb-2'>Price</p>
-          <input onChange={(e)=>setPrice(e.target.value)} value={price} className='outline-none px-3 py-2 w-full sm:w-[120px] border' type="Number" placeholder='30' />
+          <input onChange={(e)=>setPrice(e.target.value)} value={price} className='outline-none px-3 py-2 w-full sm:w-[120px] border' type="Number" placeholder='₹' />
         </div>
       </div>
 

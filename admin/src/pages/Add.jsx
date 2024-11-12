@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/admin_assets/assets'
 import axios from "axios"
-import { backendUrl, currency } from '../utils/constants'
+import { backendUrl } from '../utils/constants'
 import { toast } from 'react-toastify'
 
 const Add = ({token}) => {
@@ -138,7 +138,7 @@ const Add = ({token}) => {
       </div>
 
       <div className='flex gap-2 mt-3'>
-        <input onChange={()=>setBestseller(prev => !prev )} checked={bestseller} type="checkbox" id="bestseller" />
+        <input onChange={()=>setBestseller(prev => Boolean(!prev) )} checked={bestseller} type="checkbox" id="bestseller" />
         <label className='cursor-pointer' htmlFor="bestseller">Add to Bestseller</label>
       </div>
 

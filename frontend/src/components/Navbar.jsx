@@ -1,12 +1,20 @@
 import React, { useContext, useState } from 'react'
 import { assets } from '../assets/frontend_assets/assets'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 
 const Navbar = () => {
 
   const [visible,setVisible] = useState(false);
-  const {setShowSearch , getCartCount } = useContext(ShopContext)
+  const {setShowSearch , getCartCount, token, setToken } = useContext(ShopContext)
+
+  const navigate = useNavigate()
+
+  const logOutUser = ()=>{
+        navigate('/login')
+        localStorage.removeItem('token')
+        getCartCount('')
+  }
 
   return (
     <div className='flex justify-between items-center py-5 font-medium'>
@@ -38,7 +46,7 @@ const Navbar = () => {
             <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-600 rounded-lg'>
               <p className='cursor-pointer hover:text-black'>My Profile</p>
               <Link to='/orders'><p className='cursor-pointer hover:text-black'>Orders</p></Link>
-              <p className='cursor-pointer hover:text-black'>Logout</p>
+              <p onClick={logOutUser} className='cursor-pointer hover:text-black'>Logout</p>
             </div>
           </div>
         </div>

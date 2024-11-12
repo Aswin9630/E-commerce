@@ -8,6 +8,7 @@ const ShopContextProvider = (props)=>{
     const [showSearch,setShowSearch] = useState(false)
     const [cartItems,setCartItems] = useState({})
     const [products, setProducts] = useState([])
+    const [ token, setToken ] = useState('')
 
     const currency = '₹';
     const delivery_fee = 30;
@@ -15,6 +16,12 @@ const ShopContextProvider = (props)=>{
 
     useEffect(()=>{
         getProducts()
+    },[])
+
+    useEffect(()=>{
+        if(!token && localStorage.getItem('token')){
+            setToken(localStorage.getItem('token'))
+        }
     },[])
 
     const addToCart = async ( itemId, size )=>{
@@ -101,7 +108,8 @@ const ShopContextProvider = (props)=>{
         cartItems,addToCart,
         getCartCount,updateQuantity,
         getCartAmount,
-        backendurl , products
+        backendurl , products,
+        token,setToken
     }
 
     return (

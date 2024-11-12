@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../utils/constants";
 import {toast} from 'react-toastify'
 import {useNavigate} from 'react-router-dom'
+import { ShopContext } from "../context/ShopContext";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
-  const [token, setToken] = useState('');
   const [name,setName] = useState('')
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
+
+  const {token, setToken} = useContext(ShopContext)
   
   const navigate = useNavigate()
 

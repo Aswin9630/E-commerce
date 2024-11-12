@@ -10,9 +10,9 @@ const Home = () => {
     <div>
       <Hero />
       <LatestCollection />
-      <BestSeller/>
-      <OurPolicy/>
-      <NewsLetter/>
+      <BestSeller />
+      <OurPolicy />
+      <NewsLetter />
     </div>
   )
 }

@@ -77,9 +77,20 @@ const Navbar = () => {
           )}
         </div>
 
-        {token && (
+        { token ? (
           <Link to="/cart" className="relative">
             <img
+              src={assets.cart_icon}
+              className="w-5 min-w-5"
+              alt="cart-icon"
+            />
+            <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[10px]">
+              {getCartCount()}
+            </p>
+          </Link>
+        ) :(
+          <Link to='/login' className="relative">
+             <img
               src={assets.cart_icon}
               className="w-5 min-w-5"
               alt="cart-icon"
@@ -96,6 +107,7 @@ const Navbar = () => {
           alt="menu-icon"
         />
       </div>
+      
 
       <div
         className={`absolute top-0 right-0 bottom-0 overflow-hidden transition-all bg-white ${

@@ -7,6 +7,8 @@ import userRoutes from "./routes/userRoutes.js"
 import adminRoutes from "./routes/adminRoute.js"
 import productRoutes from "./routes/productRoute.js"
 import cartRoutes from './routes/cartRoute.js' 
+import orderRoutes from './routes/orderRoute.js' 
+
 dotenv.config()
 
 const app = express()
@@ -22,6 +24,7 @@ app.use('/api/user',userRoutes)
 app.use('/api/admin',adminRoutes)
 app.use('/api/product',productRoutes)
 app.use('/api/cart',cartRoutes)
+app.use('/api/order',orderRoutes)
 
 app.listen(PORT,()=>console.log(`Server running on PORT:${PORT}`))
 

@@ -8,7 +8,7 @@ const adminAuth =async (req,res,next)=>{
             const token = authHeader.split(' ')[1]            
             const decoded = jwt.verify(token, TOKEN)            
             req.admin = decoded;
-            next()
+            next() 
         }else{
             res.json({ success:false, message:"Admin authorization required"})
         }

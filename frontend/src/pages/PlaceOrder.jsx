@@ -59,14 +59,22 @@ const PlaceOrder = () => {
 
         switch(method){
           case 'cod':
-            const response = await axios.post(BACKEND_URL+'/api/order/cod',orderData,{ headers: { Authorization: token } })
-            if(response.data.success){
-              setCartItems({})
-              navigate('/orders')
-            }else{
-              toast.error(response.data.message)
-            }
-            break;
+              const response = await axios.post(BACKEND_URL+'/api/order/cod',orderData,{ headers: { Authorization: token } })
+              if(response.data.success){
+                setCartItems({})
+                navigate('/orders')
+              }else{
+                toast.error(response.data.message)
+              }
+          break;
+
+          case 'razorpay':
+              const responseRazorpay = await axios.post(BACKEND_URL+'/api/order/razorpay',orderData,{headers:{ Authorization: token } })
+              if(responseRazorpay.data.success){
+                console.log(responseRazorpay.data);
+                
+              }
+          break;
 
             default:
               break;

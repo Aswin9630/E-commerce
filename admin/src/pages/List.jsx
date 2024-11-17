@@ -78,8 +78,8 @@ const List = ({token}) => {
                       <button onClick={async()=>{
                         await removeProduct(item._id)
                         setShowConfirm(false)
-                      }} className='bg-green-500 text-white px-4 py-2 rounded-lg mr-4'>Yes</button>
-                      <button onClick={()=>setShowConfirm(false)} className='bg-red-500 text-white px-4 py-2 rounded-lg mr-4'>No</button>
+                      }} className='bg-black text-white px-4 py-2 rounded-lg mr-4'>Yes</button>
+                      <button onClick={()=>setShowConfirm(false)} className='bg-black text-white px-4 py-2 rounded-lg mr-4'>No</button>
                     </div>
                   </div>  
                   </div>         

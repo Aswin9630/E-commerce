@@ -71,7 +71,7 @@ const Cart = () => {
                           <button onClick={()=>{
                             updateQuantity(selectedItem.id , selectedItem.size, 0 )
                             setShowModal(false);
-                          }} className='bg-red-500 text-white px-4 py-2 mr-2 rounded'>Confirm</button>
+                          }} className='bg-black text-white px-4 py-2 mr-2 rounded'>Confirm</button>
                           <button onClick={()=>setShowModal(false)}
                               className='bg-gray-300 px-4 py-2 rounded'>Cancel</button>
                         </div>

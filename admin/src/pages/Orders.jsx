@@ -28,7 +28,7 @@ const Orders = ({token}) => {
       }   
 
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error(error.message)
       
     }
@@ -41,7 +41,7 @@ const Orders = ({token}) => {
         await fetchAllOrders()
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error(error.message)
       
     }

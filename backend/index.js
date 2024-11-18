@@ -36,8 +36,9 @@ const PORT = process.env.PORT || 3000
 connectDB()
 connectCloudinary()
 
-app.use(express.json())
 app.use(cors(corsOptions))
+app.options("*", cors(corsOptions));
+app.use(express.json())
  
 app.use('/api/user',userRoutes)
 app.use('/api/admin',adminRoutes)

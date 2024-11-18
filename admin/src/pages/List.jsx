@@ -73,7 +73,7 @@ const List = ({token}) => {
                 showConfirm === item._id && (
                   <div  className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-20'>
                   <div className='bg-white shadow-lg p-6 rounded-md'>
-                   <p className='text-base'>Are you sure? You want to Delete this product</p>
+                   <p className='text-base'>Are you sure? You want to <span className='font-semibold text-black'>DELETE</span> this product</p>
                     <div className='flex justify-between mt-4'>
                       <button onClick={async()=>{
                         await removeProduct(item._id)

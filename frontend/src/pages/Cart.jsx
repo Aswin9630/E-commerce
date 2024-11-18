@@ -66,7 +66,7 @@ const Cart = () => {
                   showModal && (
                     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
                       <div className='bg-white p-6 rounded shadow-md'>
-                        <p>Are you sure, you want delete this item from cart?</p>
+                        <p>Are you sure, you want <span className='font-semibold text-black'>DELETE</span> this item from cart?</p>
                         <div className='flex justify-end mt-4'>
                           <button onClick={()=>{
                             updateQuantity(selectedItem.id , selectedItem.size, 0 )

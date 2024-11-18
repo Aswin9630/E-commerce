@@ -26,6 +26,8 @@ app.use('/api/product',productRoutes)
 app.use('/api/cart',cartRoutes)
 app.use('/api/order',orderRoutes)
 
+app.get('/', (req,res) => res.send("API working") )
+
 app.listen(PORT,()=>console.log(`Server running on PORT:${PORT}`))
 
 

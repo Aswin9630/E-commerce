@@ -10,10 +10,7 @@ import cartRoutes from './routes/cartRoute.js'
 import orderRoutes from './routes/orderRoute.js' 
 dotenv.config()
 
-const allowedOrigins = process.env.NODE_ENV === "production"
-
-  ? [process.env.FRONTEND_DEPLOY, process.env.ADMIN_DEPLOY]
-  :[process.env.FRONTEND_LOCAL, process.env.ADMIN_LOCAL];
+const allowedOrigins = process.env.NODE_ENV === "production" ? ["https://ak-trendz.onrender.com", process.env.ADMIN_DEPLOY] : [process.env.FRONTEND_LOCAL, process.env.ADMIN_LOCAL];
  
   const corsOptions = {
     origin: (origin, callback) => {
@@ -24,7 +21,6 @@ const allowedOrigins = process.env.NODE_ENV === "production"
       }
     },
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    
     credentials: true, 
     preflightContinue: false, 
     optionsSuccessStatus: 204,
@@ -36,9 +32,9 @@ const PORT = process.env.PORT || 3000
 connectDB()
 connectCloudinary()
 
-
 app.use(cors(corsOptions)) 
 app.use(express.json())
+
 app.get('/', (req,res) => res.send("API working") )
 
 app.use('/api/user',userRoutes)

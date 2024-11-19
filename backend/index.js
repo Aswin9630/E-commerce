@@ -11,6 +11,7 @@ import orderRoutes from './routes/orderRoute.js'
 dotenv.config()
 
 const allowedOrigins = process.env.NODE_ENV === "production"
+
   ? [process.env.FRONTEND_DEPLOY, process.env.ADMIN_DEPLOY]
   :[process.env.FRONTEND_LOCAL, process.env.ADMIN_LOCAL];
  

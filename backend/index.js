@@ -10,7 +10,7 @@ import cartRoutes from './routes/cartRoute.js'
 import orderRoutes from './routes/orderRoute.js' 
 dotenv.config()
 
-const allowedOrigins = process.env.NODE_ENV === "production" ? ["https://ak-trendz.onrender.com", process.env.ADMIN_DEPLOY] : [process.env.FRONTEND_LOCAL, process.env.ADMIN_LOCAL];
+const allowedOrigins =  ["https://ak-trendz-store.onrender.com", process.env.ADMIN_DEPLOY] 
  
   const corsOptions = {
     origin: (origin, callback) => {

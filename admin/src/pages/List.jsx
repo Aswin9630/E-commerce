@@ -10,7 +10,7 @@ const List = ({token}) => {
   
   useEffect(()=>{
     fetchList()
-  },[]);
+  },[token]);
 
   const fetchList = async ()=>{
     try {

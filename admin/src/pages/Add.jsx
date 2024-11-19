@@ -27,7 +27,7 @@ const Add = ({token}) => {
       formData.append("category",category)
       formData.append("subCategory",subCategory)
       formData.append("bestseller",bestseller)
-      formData.append("sizes",JSON.stringify(sizes))
+      formData.append("sizes",JSON.stringify(sizes)) 
 
       image1 && formData.append("image1",image1)
       image2 && formData.append("image2",image2)
@@ -35,7 +35,7 @@ const Add = ({token}) => {
       image4 && formData.append("image4",image4)
 
       const response = await axios.post(import.meta.env.VITE_BACKEND_URI + '/api/product/add', formData, {
-                        headers:{Authorization:`Bearer ${token}`}
+                        headers:{Authorization: `Bearer ${token}` }
     })
 
       if (response.data.success) {
@@ -48,7 +48,6 @@ const Add = ({token}) => {
           setImage3(false)
           setImage4(false)
       }else{
-
         toast.error(response.data.message)
       }  
      

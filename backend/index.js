@@ -10,11 +10,10 @@ import cartRoutes from './routes/cartRoute.js'
 import orderRoutes from './routes/orderRoute.js' 
 dotenv.config()
 
-const allowedOrigins = [
-    "https://aktrendz-admin.vercel.app",
-    "https://aktrendz-frontend.vercel.app"
-  ];
-
+const allowedOrigins = process.env.NODE_ENV === "production"
+  ? ["https://yourfrontend.com", "https://youradmin.com"]
+  : ["http://localhost:5173", "http://localhost:5174"];
+ 
   const corsOptions = {
     origin: (origin, callback) => {
       if (!origin || allowedOrigins.includes(origin)) {
@@ -30,15 +29,16 @@ const allowedOrigins = [
     optionsSuccessStatus: 204,
   };
 
-const app = express()
+const app = express() 
 const PORT = process.env.PORT || 3000
 
 connectDB()
 connectCloudinary()
 
-app.use(cors(corsOptions))
-app.options("*", cors(corsOptions));
+
+app.use(cors(corsOptions)) 
 app.use(express.json())
+app.get('/', (req,res) => res.send("API working") )
  
 app.use('/api/user',userRoutes)
 app.use('/api/admin',adminRoutes)
@@ -46,7 +46,6 @@ app.use('/api/product',productRoutes)
 app.use('/api/cart',cartRoutes)
 app.use('/api/order',orderRoutes)
 
-app.get('/', (req,res) => res.send("API working") )
 
 app.listen(PORT,()=>console.log(`Server running on PORT:${PORT}`))
 

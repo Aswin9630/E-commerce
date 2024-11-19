@@ -14,9 +14,12 @@ const addProduct = async(req,res)=>{
 
         const images = [image1,image2,image3,image4].filter((item)=>item!==undefined)
 
+        console.log("Starting product upload...");
         const imagesUrl = await Promise.all(
             images.map(async (item)=>{
+                console.log(`Uploading image: ${item.originalname}`);
                 let result = await cloudinary.uploader.upload(item.path,{resource_type:"image"})
+                console.log(`Image uploaded: ${result.secure_url}`);
                 return result.secure_url                
             })
         )

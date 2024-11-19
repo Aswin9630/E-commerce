@@ -4,7 +4,8 @@ const { TOKEN } = process.env
 const adminAuth =async (req,res,next)=>{ 
     try{
         const authHeader =  req.headers.authorization
-        if(authHeader && authHeader.startsWith("Bearer ")){
+        
+        if(authHeader || authHeader && authHeader.startsWith("Bearer ")){
             const token = authHeader.split(' ')[1]            
             const decoded = jwt.verify(token, TOKEN)            
             req.admin = decoded;

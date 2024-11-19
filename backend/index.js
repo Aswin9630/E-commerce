@@ -20,7 +20,7 @@ const allowedOrigins = process.env.NODE_ENV === "production" ? ["https://ak-tren
         callback(new Error("Not allowed by CORS"));
       }
     },
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, 
     preflightContinue: false, 
     optionsSuccessStatus: 204,

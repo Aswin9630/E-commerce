@@ -12,9 +12,6 @@ const ShopContextProvider = (props)=>{
 
     const currency = '₹';
     const delivery_fee = 30;
-    const axiosInstance = axios.create({
-        timeout: 10000, // Timeout after 10 seconds
-      })
 
     useEffect(()=>{
         getProducts()
@@ -131,7 +128,7 @@ const ShopContextProvider = (props)=>{
 
     const getProducts = async ()=>{
         try {
-            const response = await axiosInstance.get(`${import.meta.env.VITE_BACKEND_URI}/api/product/list`,{withCredentials:true})
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URI}/api/product/list`,{withCredentials:true})
 
                 if(response.data.success){
                     setProducts(response.data.product)
@@ -139,7 +136,7 @@ const ShopContextProvider = (props)=>{
                     toast.error(response.data.message)
                 }
         } catch (error) {
-            console.error(error);
+            console.error('Error fetching products:', error.response || error);
             toast.error(error.message)
             
         }

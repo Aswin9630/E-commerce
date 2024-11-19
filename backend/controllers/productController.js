@@ -49,9 +49,17 @@ const addProduct = async(req,res)=>{
 }
 
 const listProduct = async(req,res)=>{
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
     try {
-        const product = await productModel.find({})
-        res.json({ success:true, product })
+        const products = await productModel.find({})
+        .skip((page - 1) * limit)
+        .limit(limit);
+        if (products.length > 0) {
+            res.json({ success: true, product: products });
+        } else {
+            res.json({ success: true, message: 'No products found', product: [] });
+        }
 
     } catch (error) {
         res.json({success:false, message:error.message})

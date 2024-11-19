@@ -29,7 +29,7 @@ const Login = () => {
 
     try {
       if (isSignIn) {
-        const response = await axios.post(BACKEND_URL + "/api/user/login",{email,password});
+        const response = await axios.post(import.meta.env.VITE_BACKEND_URI+ "/api/user/login",{email,password});
         if(response.data.success){
           setToken(response.data.token);
           localStorage.setItem('token',response.data.token) 
@@ -39,7 +39,7 @@ const Login = () => {
         }
 
       } else {
-        const response = await axios.post(BACKEND_URL + "/api/user/register",{name,email,password});
+        const response = await axios.post(import.meta.env.VITE_BACKEND_URI+ "/api/user/register",{name,email,password});
         if(response.data.success){
           setToken(response.data.token);
           localStorage.setItem('token',response.data.token) 

@@ -5,7 +5,6 @@ import { assets } from '../assets/frontend_assets/assets'
 import { useNavigate } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 import axios from 'axios'
-import { BACKEND_URL } from '../utils/constants'
 import { toast } from 'react-toastify'
 
 const PlaceOrder = () => {
@@ -42,7 +41,7 @@ const PlaceOrder = () => {
       order_id:order.id,
       handler:async(response)=>{
         try {
-          const { data } = await axios.post(BACKEND_URL+'/api/order/verifyRazorpay', response, {headers:{Authorization:token}})
+          const { data } = await axios.post(import.meta.env.VITE_BACKEND_URI+'/api/order/verifyRazorpay', response, {headers:{Authorization:token}})
           if(data.success){
             navigate('/orders')
             setCartItems({})
@@ -85,7 +84,7 @@ const PlaceOrder = () => {
 
         switch(method){
           case 'cod':
-              const response = await axios.post(BACKEND_URL+'/api/order/cod',orderData,{ headers: { Authorization: token } })
+              const response = await axios.post(import.meta.env.VITE_BACKEND_URI+'/api/order/cod',orderData,{ headers: { Authorization: token } })
               if(response.data.success){
                 setCartItems({})
                 navigate('/orders')
@@ -95,7 +94,7 @@ const PlaceOrder = () => {
           break;
 
           case 'razorpay':
-              const responseRazorpay = await axios.post(BACKEND_URL+'/api/order/razorpay',orderData,{headers:{ Authorization: token } })
+              const responseRazorpay = await axios.post(import.meta.env.VITE_BACKEND_URI+'/api/order/razorpay',orderData,{headers:{ Authorization: token } })
               if(responseRazorpay.data.success){
                 initPay(responseRazorpay.data.order)
               }

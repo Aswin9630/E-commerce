@@ -11,8 +11,8 @@ import orderRoutes from './routes/orderRoute.js'
 dotenv.config()
 
 const allowedOrigins = process.env.NODE_ENV === "production"
-  ? ["https://yourfrontend.com", "https://youradmin.com"]
-  : ["http://localhost:5173", "http://localhost:5174"];
+  ? [process.env.FRONTEND_DEPLOY, process.env.ADMIN_DEPLOY]
+  :[process.env.FRONTEND_LOCAL, process.env.ADMIN_LOCAL];
  
   const corsOptions = {
     origin: (origin, callback) => {

@@ -3,7 +3,6 @@ import Title from "../components/Title"
 import { ShopContext } from '../context/ShopContext'
 import { toast } from 'react-toastify'
 import axios from 'axios'
-import { BACKEND_URL } from '../utils/constants'
 
 const Orders = () => {
   const { token , currency } = useContext(ShopContext)
@@ -18,7 +17,7 @@ const Orders = () => {
           if(!token){
             return null
           }else{
-            const response = await axios.post(BACKEND_URL+'/api/order/userorders',{},{headers:{Authorization:token}})
+            const response = await axios.post(import.meta.env.VITE_BACKEND_URI+'/api/order/userorders',{},{headers:{Authorization:token}})
 
             let allOrderItems = []
 

@@ -40,7 +40,7 @@ connectCloudinary()
 app.use(cors(corsOptions)) 
 app.use(express.json())
 app.get('/', (req,res) => res.send("API working") )
- 
+
 app.use('/api/user',userRoutes)
 app.use('/api/admin',adminRoutes)
 app.use('/api/product',productRoutes)

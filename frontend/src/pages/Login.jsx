@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { BACKEND_URL } from "../utils/constants";
 import {toast} from 'react-toastify'
 import {useNavigate} from 'react-router-dom'
 import { ShopContext } from "../context/ShopContext";

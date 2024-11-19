@@ -47,7 +47,7 @@ const ShopContextProvider = (props)=>{
 
         if(token){
             try {
-                const response = await axios.post( import.meta.env.VITE_BACKEND_URI + '/api/cart/add', { itemId,size }, { headers: {Authorization:token} } )
+                const response = await axios.post( import.meta.env.VITE_BACKEND_URI+'/api/cart/add', { itemId,size }, { headers: {Authorization:token} } )
                  toast.success(response.data.message)
             } catch (error) {
                 console.log(error);
@@ -81,7 +81,7 @@ const ShopContextProvider = (props)=>{
 
         if(token){
             try {
-                await axios.post(import.meta.env.VITE_BACKEND_URI + '/api/cart/update' ,
+                await axios.post(import.meta.env.VITE_BACKEND_URI+'/api/cart/update' ,
                     {itemId, size, quantity},
                     {headers:{Authorization:token}}
                  )
@@ -95,7 +95,7 @@ const ShopContextProvider = (props)=>{
 
     const getUserCart = async (token) =>{
         try {
-            const response = await axios.post(import.meta.env.VITE_BACKEND_URI + '/api/cart/get',
+            const response = await axios.post(import.meta.env.VITE_BACKEND_URI+'/api/cart/get',
                 {},
                 { headers: { Authorization: token }}
             )
@@ -128,7 +128,7 @@ const ShopContextProvider = (props)=>{
 
     const getProducts = async ()=>{
         try {
-            const response = await axios.get(import.meta.env.VITE_BACKEND_URI+ '/api/product/list')
+            const response = await axios.get(import.meta.env.VITE_BACKEND_URI+'/api/product/list')
 
                 if(response.data.success){
                     setProducts(response.data.product)

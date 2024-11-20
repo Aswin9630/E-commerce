@@ -128,7 +128,7 @@ const ShopContextProvider = (props)=>{
 
     const getProducts = async ()=>{
         try {
-            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URI}/api/product/list`,{withCredentials:true})
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URI}/api/product/list`)
 
                 if(response.data.success){
                     setProducts(response.data.product)

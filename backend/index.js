@@ -10,21 +10,21 @@ import cartRoutes from './routes/cartRoute.js'
 import orderRoutes from './routes/orderRoute.js' 
 dotenv.config()
 
-const allowedOrigins =  ["https://ak-trendz-store.onrender.com", "https://ak-trendz-admin.onrender.com"] 
+// const allowedOrigins =  ["https://ak-trendz-store.onrender.com", "https://ak-trendz-admin.onrender.com"] 
  
-  const corsOptions = {
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, 
-    preflightContinue: false, 
-    optionsSuccessStatus: 204,
-  };
+//   const corsOptions = {
+//     origin: (origin, callback) => {
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     }, 
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,    
+//     preflightContinue: false, 
+//     optionsSuccessStatus: 204,
+//   };
 
 const app = express() 
 const PORT = process.env.PORT || 3000
@@ -32,11 +32,10 @@ const PORT = process.env.PORT || 3000
 connectDB()
 connectCloudinary()
 
-app.use(cors(corsOptions)) 
-app.options('*', cors(corsOptions));
+// app.use(cors(corsOptions)) 
+app.use(cors()) 
 app.use(express.json())
 
-app.get('/', (req,res) => res.send("API working") )
 
 app.use('/api/user',userRoutes)
 app.use('/api/admin',adminRoutes)

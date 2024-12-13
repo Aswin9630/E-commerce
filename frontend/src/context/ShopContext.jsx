@@ -126,15 +126,16 @@ const ShopContextProvider = (props)=>{
         return totalAmount;
     }
 
-    const getProducts = async ()=>{
+    const getProducts = async ()=>{ 
         try {
             const response = await axios.get(`${import.meta.env.VITE_BACKEND_URI}/api/product/list`)
-
+                console.log("response",response);
+                
                 if(response.data.success){
                     setProducts(response.data.product)
                 }else{
                     toast.error(response.data.message)
-                }
+                }   
         } catch (error) {
             console.error('Error fetching products:', error.response || error);
             toast.error(error.message)

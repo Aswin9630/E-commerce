@@ -10,4 +10,4 @@ const connectDB = async ()=>{
     await mongoose.connect(`${MONGO_URL}/AK_TRENDZ`);
 }
 
-export default connectDB;
+export default connectDB; 

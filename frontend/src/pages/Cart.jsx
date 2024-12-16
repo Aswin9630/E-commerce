@@ -10,6 +10,8 @@ const Cart = () => {
   const {products,cartItems,currency,updateQuantity} = useContext(ShopContext);
 
   const [cartData,setCartData] = useState([])
+  console.log(cartData);
+  
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const navigate = useNavigate()
@@ -48,11 +50,11 @@ const Cart = () => {
             return(
               <div key={index} className='py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4'>
                 <div className='flex gap-5 items-start'>
-                  <img className='w-16 sm:w-20' src={productData.image[0]} alt="product-image" />
+                  <img className='w-16 sm:w-20' src={productData?.image[0]} alt="product-image" />
                   <div>
-                    <p className='font-medium text-sm sm:text-lg'>{productData.name}</p>
+                    <p className='font-medium text-sm sm:text-lg'>{productData?.name}</p>
                     <div className='flex items-center gap-5 mt-2'>
-                      <p>{currency}{productData.price}</p>
+                      <p>{currency}{productData?.price}</p>
                       <p className='px-2 sm:px-3 sm:py-1 border bg-slate-50'>{item.size}</p>
                     </div>
                   </div>
